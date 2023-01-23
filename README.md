@@ -1,4 +1,4 @@
-# spark-ml-examples
+# Apache Spark ML Programming Examples
 Examples of Machine Learning pipelines development with Scala and Spark
 
 1. Collaborative Filtering for Recommender Systems: Spark's MLlib library includes a collaborative filtering algorithm that can be used to build personalized recommendation systems.
