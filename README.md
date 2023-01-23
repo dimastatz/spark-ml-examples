@@ -1,5 +1,5 @@
 # Apache Spark ML Programming Examples
-This repository contains examples of real-time machine learning pipelines running on Apache Spark ML.
+## This repository contains examples of real-time machine learning pipelines running on Apache Spark ML.
 
 1. Fraud detection: An online fraud detection system that uses Spark ML to analyze transaction data in real-time and identify patterns indicative of fraud.
 
