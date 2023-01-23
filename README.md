@@ -1,16 +1,16 @@
 # Apache Spark ML Programming Examples
-Examples of Machine Learning pipelines development with Scala and Apache Spark ML
+This repository contains examples of real-time machine learning pipelines running on Apache Spark ML:
 
-1. Fraud Detection: Spark is used to process large datasets of financial transactions to detect fraudulent activity. Machine learning algorithms can be trained on historical data to identify patterns associated with fraud and then applied to new data to detect potential fraud.
+1. Fraud detection: An online fraud detection system that uses Spark ML to analyze transaction data in real-time and identify patterns indicative of fraud.
 
-2. Predictive Maintenance: Spark is used to process large datasets of sensor data from industrial equipment to predict when maintenance is needed. Machine learning algorithms can be trained on historical data to identify patterns associated with equipment failure and then applied to new data to predict when maintenance is needed.
+2. Recommender systems: A recommendation engine that uses Spark ML to analyze user behavior data in real-time and generate personalized product recommendations.
 
-3. Network Intrusion Detection: Spark is used to process large datasets of network traffic to detect intrusions. Machine learning algorithms can be trained on historical data to identify patterns associated with network intrusions and then applied to new data to detect potential intrusions.
+3. Anomaly detection: A system that uses Spark ML to analyze sensor data in real-time and identify patterns that deviate from the norm, indicating an anomaly.
 
-4. Healthcare: Spark is used to process large datasets of medical records to identify patterns and predict outcomes. Machine learning algorithms can be trained on historical data to identify patterns associated with disease progression and then applied to new data to predict patient outcomes.
+4. Image recognition: An image recognition system that uses Spark ML to analyze video streams in real-time and identify objects or people in the frame.
 
-5. Quality Control: Spark is used to process large datasets of production data to detect defects. Machine learning algorithms can be trained on historical data to identify patterns associated with defects and then applied to new data to detect potential defects.
+5. Natural Language Processing: A NLP pipeline using Spark ML that can process a large amount of text data in real-time and extract insights.
 
-6. Image Processing: Spark is used to process large image datasets using the OpenCV library.
+6. Predictive maintenance: A system that uses sensor data from industrial equipment to predict when maintenance is needed in real-time, allowing for proactive maintenance to prevent breakdowns.
 
-7. Predictive Modeling: Spark is used to process large datasets of data to predict future outcomes. Machine learning algorithms can be trained on historical data to identify patterns and predict outcomes using various techniques such as supervised, unsupervised, and deep learning.
+7. Traffic forecasting: A system that uses real-time traffic data to predict traffic congestion and adjust traffic signals accordingly.
