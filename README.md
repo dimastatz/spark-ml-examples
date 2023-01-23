@@ -1,2 +1,2 @@
 # spark-ml-examples
-Scala and Spark examples and POC
+Scala and Spark examples
