@@ -11,6 +11,6 @@ This repository contains examples of real-time machine learning pipelines runnin
 
 5. Natural Language Processing: A NLP pipeline using Spark ML that can process a large amount of text data in real-time and extract insights.
 
-6. Predictive maintenance: A system that uses sensor data from industrial equipment to predict when maintenance is needed in real-time, allowing for proactive maintenance to prevent breakdowns.
+6. Predictive cost analysis of Spark Applications: A system that uses Spark Listener data to analyzed cost impact of suboptimal code.
 
 7. Traffic forecasting: A system that uses real-time traffic data to predict traffic congestion and adjust traffic signals accordingly.
