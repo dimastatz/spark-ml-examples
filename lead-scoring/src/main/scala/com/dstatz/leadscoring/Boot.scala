@@ -2,6 +2,7 @@ package com.dstatz.leadscoring
 
 import org.apache.log4j.LogManager
 import com.dstatz.leadscoring.common._
+import com.typesafe.config.ConfigFactory
 import com.dstatz.leadscoring.ingest.SourceReadersFactory
 
 object Boot {
@@ -9,6 +10,8 @@ object Boot {
   def main(args: Array[String]): Unit = {
     println("lead-scoring is started")
     log.info("creating spark session")
+
+    ConfigFactory.load()
     val session = SessionFactory.getSparkSession()
     val sourceReader = SourceReadersFactory.getSourceReader(session)
 
