@@ -4,7 +4,7 @@ version := "0.1"
 scalaVersion := "2.12.12"
 name := "lead-scoring"
 
-val sparkVersion = "3.3.1"
+val sparkVersion = "3.0.1"
 val dptLibVersion = "3.3.9"
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
