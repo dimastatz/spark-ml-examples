@@ -11,11 +11,10 @@ object Boot {
     println("lead-scoring is started")
     log.info("creating spark session")
 
-    ConfigFactory.load()
+    val conf = ConfigFactory.load()
     val session = SessionFactory.getSparkSession()
-    val sourceReader = SourceReadersFactory.getSourceReader(session)
+    val sourceReader = SourceReadersFactory.getSourceReader(session, conf)
 
-    sourceReader.readLeads.collect()
     session.close()
   }
 }
