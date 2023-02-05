@@ -3,18 +3,25 @@ package com.dstatz.leadscoring
 import org.apache.log4j.LogManager
 import com.dstatz.leadscoring.common._
 import com.typesafe.config.ConfigFactory
-import com.dstatz.leadscoring.ingest.SourceReadersFactory
 
 object Boot {
   private lazy val log = LogManager.getLogger(Boot.getClass)
   def main(args: Array[String]): Unit = {
-    println("lead-scoring is started")
-    log.info("creating spark session")
+    import com.dstatz.leadscoring.scoring.Scorer._
+    import com.dstatz.leadscoring.training.Trainer._
+    import com.dstatz.leadscoring.processing.Processor._
+    import com.dstatz.leadscoring.reporting.Reporter._
+
+    log.info("starting spark app")
 
     val conf = ConfigFactory.load()
-    val session = SessionFactory.getSparkSession()
-    val sourceReader = SourceReadersFactory.getSourceReader(session, conf)
+    val factory = new AppFactory(conf)
 
-    session.close()
+    import factory._
+    getSourceReader.readLeads
+      .process()
+      .trainIfRequired()
+      .score()
+      .reportResults()
   }
 }
