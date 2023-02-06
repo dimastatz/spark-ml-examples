@@ -1,17 +1,17 @@
 package com.dstatz.leadscoring.tests
 
 import scala.util.Try
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config._
+import com.dstatz.leadscoring.common._
 import org.scalatest.funsuite.AnyFunSuite
-import com.dstatz.leadscoring.common.AppFactory
 
 class TestDataCollector extends AnyFunSuite {
   test("create spark session") {
-    val conf = ConfigFactory.load()
-    val factory = new AppFactory(conf)
+    val conf: Config = ConfigFactory.load()
+    val factory = new App.Factory(conf)
     val session = factory.getSparkSession
-    val sourceReader = Try(factory.getSourceReader)
-    assert(sourceReader.isFailure)
+    val state = Try(factory.readSource)
+    assert(state.isFailure)
     session.close()
   }
 
