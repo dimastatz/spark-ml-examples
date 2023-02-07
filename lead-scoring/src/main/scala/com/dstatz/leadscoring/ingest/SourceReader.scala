@@ -1,5 +1,9 @@
 package com.dstatz.leadscoring.ingest
 
 trait SourceReader {
-  def readSource: Source
+  def readSource(
+      leadsPath: String,
+      eventsPath: String,
+      tasksPath: String
+  ): Source
 }

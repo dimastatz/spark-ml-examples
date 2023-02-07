@@ -1,5 +1,6 @@
 package com.dstatz.leadscoring.common
 
+import AppConf._
 import com.typesafe.config._
 import org.apache.spark.sql._
 import com.dstatz.leadscoring.ingest._
@@ -20,7 +21,16 @@ object App {
         .getOrCreate()
     }
 
-    def readSource: State = ???
+    def readSource: State = {
+      val reader = conf.getStringOrElse("conf.ingest.type", "default") match {
+        case "default" => new FileSourceReader(getSparkSession)
+      }
+
+      val leadsPath = conf.getString("conf.ingest.leadsPath")
+      val eventsPath = conf.getString("conf.ingest.eventsPath")
+      val tasksPath = conf.getString("conf.ingest.tasksPath")
+      State(reader.readSource(leadsPath, eventsPath, tasksPath), None)
+    }
   }
 
   implicit class RichDataFrame(state: State)(implicit factory: Factory) {

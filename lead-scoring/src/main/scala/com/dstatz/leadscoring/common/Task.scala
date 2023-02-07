@@ -1,6 +1,6 @@
 package com.dstatz.leadscoring.common
 
-class Task(
+case class Task(
     isClosed: String,
     CompletedDateTime: String
 )
