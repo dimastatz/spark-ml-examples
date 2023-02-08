@@ -15,5 +15,8 @@ class TestDataCollector extends AnyFunSuite {
     session.close()
   }
 
-  test("read leads") {}
+  test("read leads") {
+    val conf = TestHelpers.getConfig
+    println(conf.getString("conf.spark.master"))
+  }
 }
