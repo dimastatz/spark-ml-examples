@@ -1,6 +1,5 @@
 package com.dstatz.leadscoring.common
 
-import AppConf._
 import com.typesafe.config._
 import org.apache.spark.sql._
 import com.dstatz.leadscoring.ingest._
@@ -15,15 +14,15 @@ object App {
     def getSparkSession: SparkSession = {
       SparkSession
         .builder()
-        .master("local[1]")
+        .master(conf.getString("conf.spark.master"))
         .appName("lead-score-example")
         .config("spark.driver.bindAddress", "127.0.0.1")
         .getOrCreate()
     }
 
     def readSource: State = {
-      val reader = conf.getStringOrElse("conf.ingest.type", "default") match {
-        case "default" => new FileSourceReader(getSparkSession)
+      val reader = conf.getString("conf.ingest.type") match {
+        case "filesystem" => new FileSourceReader(getSparkSession)
       }
 
       val leadsPath = conf.getString("conf.ingest.leadsPath")
