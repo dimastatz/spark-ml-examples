@@ -10,6 +10,9 @@ class TestDataCollector extends AnyFunSuite {
   private val events = getClass.getResource("/ingest/events.json").getPath
 
   test("read leads") {
+    case class A(a: Int, b: String)
+    println(TestHelpers.serialize(A(1, "1")))
+
     val conf = TestHelpers.getConfig
       .withValue("conf.ingest.leadsPath", ConfigValueFactory.fromAnyRef(leads))
       .withValue("conf.ingest.tasksPath", ConfigValueFactory.fromAnyRef(tasks))

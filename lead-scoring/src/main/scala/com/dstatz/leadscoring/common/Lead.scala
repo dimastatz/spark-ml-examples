@@ -1,20 +1,20 @@
 package com.dstatz.leadscoring.common
 
-import org.joda.time.DateTime
+import java.sql._
 
 case class Lead(
     Id: String,
     Company: String,
     ConvertedAccountId: String,
     ConvertedContactId: String,
-    ConvertedData: DateTime,
+    ConvertedData: Timestamp,
     Country: String,
-    CreateDate: DateTime,
+    CreateDate: Timestamp,
     Domain: String,
     Email: String,
     Industry: String,
     IsConverted: String,
-    LastModified: DateTime,
+    LastModified: Timestamp,
     State: String,
     Title: String
 )
