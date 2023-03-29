@@ -11,7 +11,6 @@ class TestDataCollector extends AnyFunSuite {
 
   test("read leads") {
     case class A(a: Int, b: String)
-    println(TestHelpers.serialize(A(1, "1")))
 
     val conf = TestHelpers.getConfig
       .withValue("conf.ingest.leadsPath", ConfigValueFactory.fromAnyRef(leads))
