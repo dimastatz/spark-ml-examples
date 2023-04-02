@@ -1,6 +1,7 @@
 package com.dstatz.leadscoring.tests
 
 import com.typesafe.config._
+import org.apache.spark.sql.SparkSession
 
 object TestHelpers {
   org.slf4j.LoggerFactory
@@ -10,5 +11,14 @@ object TestHelpers {
 
   def getConfig: Config = {
     ConfigFactory.load("test.conf")
+  }
+
+  def getSparkSession: SparkSession = {
+    SparkSession
+      .builder()
+      .master("local[1]")
+      .appName("spark-template")
+      .config("spark.driver.bindAddress", "127.0.0.1")
+      .getOrCreate()
   }
 }
