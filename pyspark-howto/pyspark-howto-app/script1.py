@@ -2,12 +2,7 @@ from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
 
-def load_list_to_df() -> DataFrame:
-    spark = SparkSession.builder \
-        .appName("pyspark-howto-app-1") \
-        .config("spark.driver.bindAddress","127.0.0.1") \
-        .getOrCreate()
-
+def load_list_to_df(spark: SparkSession) -> DataFrame:
     data = [("Alice", 25), ("Bob", 30), ("Charlie", 35)]
 
     # Define the schema for the DataFrame
@@ -20,4 +15,9 @@ def load_list_to_df() -> DataFrame:
 
 
 if __name__ == "__main__":
-    load_list_to_df().show()
+    spark = SparkSession.builder \
+        .appName("pyspark-howto-app-1") \
+        .config("spark.driver.bindAddress","127.0.0.1") \
+        .getOrCreate()
+    
+    load_list_to_df(spark=spark).show()
