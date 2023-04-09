@@ -3,6 +3,7 @@ import random
 import string
 from datetime import datetime
 from frozendict import frozendict
+from models.lead import SfdcLead
 
 
 SFDC_OBJECTS = (

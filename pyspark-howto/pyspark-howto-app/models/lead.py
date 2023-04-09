@@ -1,7 +1,7 @@
 import mongoengine as meng
 
 
-class SfdcLead():
+class SfdcLead(meng.Document):
     db_colc_name = "Lead"
 
     FirstName = meng.StringField()
