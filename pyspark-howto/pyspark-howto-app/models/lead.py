@@ -8,6 +8,12 @@ def read(client: MongoClient, db_name: str, collection: str, company: str) -> li
     return list(cur)
 
 
+def write(client: MongoClient, db_name: str, collection: str, lead: str) -> str:
+    db = client.get_database(db_name)
+    collection = db.get_collection(collection)
+    return collection.insert_one(lead).inserted_id
+
+
 class SfdcLead(Document):
     db_colc_name = "Lead"
 
