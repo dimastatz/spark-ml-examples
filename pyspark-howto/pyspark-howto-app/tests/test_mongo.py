@@ -3,6 +3,7 @@ import mongomock
 
 from models.lead import *
 from mongoengine import *
+from tests.utils.tenant_fixture import *
 
 
 def test_leads():
@@ -23,15 +24,14 @@ def test_leads():
     disconnect()
 
 
-def test_write():
-    client = mongomock.MongoClient()
+def test_write(mongo_client):
     lead_in = { 'name': 'lead 1', 'company': 'lead 1 company' }
-    lead_id = write(client, 'leads_db', 'leads', lead=lead_in)
+    lead_id = write(mongo_client, 'leads_db', 'leads', lead=lead_in)
     print('lead_in', lead_id)
-    lead_out = read(client, 'leads_db', 'leads', company='lead 1 company')
+    lead_out = read(mongo_client, 'leads_db', 'leads', company='lead 1 company')
     print('lead_out', lead_out[0])
     assert lead_in['name'] == lead_out[0]['name']
-    
+    assert lead_id == lead_out[0]['_id']
 
 
 

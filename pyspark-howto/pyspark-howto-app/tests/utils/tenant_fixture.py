@@ -7,7 +7,7 @@ def tenant():
 
 
 @pytest.fixture(scope="session")
-def mongo() -> mongomock.MongoClient:
+def mongo_client() -> mongomock.MongoClient:
     client = mongomock.MongoClient()
     yield client
     client.close()
