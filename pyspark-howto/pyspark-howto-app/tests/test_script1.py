@@ -2,7 +2,7 @@ from tests.utils.tenant_fixture import *
 
 
 def test_always_passes(monkeypatch):
-    monkeypatch.setattr('script1.load_list_to_df', lambda x: 1)
+    monkeypatch.setattr('script1.load_list_to_df', lambda _: 1)
     from script1 import load_list_to_df
     assert load_list_to_df(None) == 1
 
