@@ -9,7 +9,7 @@ def test_always_passes(monkeypatch):
 
 
 def test_raising_error(monkeypatch):
-    def raise_error(spark):
+    def raise_error(_):
         raise TypeError('error')
      
     monkeypatch.setattr('script1.load_list_to_df', raise_error)
