@@ -1,10 +1,12 @@
+import re
 from mongoengine import *
 from pymongo import MongoClient
 
 
 def read(client: MongoClient, db_name: str, collection: str, company: str) -> list:
     db = client.get_database(db_name)
-    cur = db.get_collection(collection).find({'company': company })
+    rgx = re.compile(company, re.IGNORECASE)
+    cur = db.get_collection(collection).find({'company': rgx })
     return list(cur)
 
 
