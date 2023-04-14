@@ -192,3 +192,8 @@ def get_random_type(sfdc_object_type):
         random.choice(string.ascii_lowercase)
         for _ in range(18 - len(valid_sfdc_object_prefix))
     )
+
+
+def cast_mongo_id(item: dict) -> dict:
+    item['_id'] = str(item['_id'])
+    return item 

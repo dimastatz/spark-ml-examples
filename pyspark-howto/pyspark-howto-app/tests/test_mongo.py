@@ -2,6 +2,7 @@ import mongomock
 from models.lead import *
 from mongoengine import *
 from tests.utils.tenant_fixture import *
+from tests.utils.test_data_generator import *
 
 
 def test_leads(spark_session):
@@ -18,13 +19,12 @@ def test_leads(spark_session):
     first = SfdcLead.objects().first()
     assert first.FirstName == lead.FirstName
 
-    first_dic = dict(first.to_mongo())
-    del(first_dic['_id'])
+    first_dic = cast_mongo_id(dict(first.to_mongo()))
 
     df = spark_session.createDataFrame([first_dic])
     assert df.count() == 1
     
-    df.show()
+    df.show(truncate=False)
     disconnect()
 
 
@@ -48,12 +48,9 @@ def test_mongo_to_df(mongo_client, spark_session):
     leads = read(mongo_client, 'leads_db', 'leads', company='lead *')
     assert len(leads) == 4
 
-    for lead in leads:
-        del(lead['_id'])
-
+    leads = [cast_mongo_id(l) for l in leads]
     df = spark_session.createDataFrame(leads)
-    df.show()
+    df.show(truncate=False)
 
     assert df.count() == 4
     
-
