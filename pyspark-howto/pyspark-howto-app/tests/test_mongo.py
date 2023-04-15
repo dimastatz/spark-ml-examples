@@ -53,4 +53,28 @@ def test_mongo_to_df(mongo_client, spark_session):
     df.show(truncate=False)
 
     assert df.count() == 4
+
+
+def test_compare_df(mongo_client, spark_session):
+    def are_dfs_equal(df1, df2, col): 
+        return (df1.schema == df2.schema) and \
+        (df1.sort(col).collect() == df2.sort(col).collect())
+    
+
+    leads = read(mongo_client, 'leads_db', 'leads', company='lead *')
+    leads = [cast_mongo_id(l) for l in leads]
+    
+    df1 = spark_session.createDataFrame(leads)
+    df1.show()
+
+    leads2 = leads[::-1]
+    df2 = spark_session.createDataFrame(leads2)
+    df2.show()
+
+    assert are_dfs_equal(df1, df2, '_id')
+
+
+
+    
+
     
