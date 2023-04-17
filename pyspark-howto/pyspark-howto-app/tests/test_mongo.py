@@ -23,7 +23,10 @@ def test_leads(spark_session):
 
     df = spark_session.createDataFrame([first_dic])
     assert df.count() == 1
-    
+
+    leads = SfdcLead.objects().as_pymongo()
+    assert len(leads) == 1 and type(leads[0]) is dict
+
     df.show(truncate=False)
     disconnect()
 
