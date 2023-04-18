@@ -6,6 +6,11 @@ from models.lead_lean import LeadLean
 from tests.utils.tenant_fixture import *
 
 
+def test_create_df(spark_session):
+    test_data_generator.generate_sfdc_lead()
+    assert SfdcLead.count() == 1 
+
+
 def test_crunch(tenant, spark_session):
     #test_data_generator.generate_sfdc_lead()
     #assert SfdcLead.count() == 1 
