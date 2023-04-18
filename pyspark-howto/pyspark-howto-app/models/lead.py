@@ -37,3 +37,11 @@ class SfdcLead(Document):
         return set(
             cls.objects(Id__in=list(sfids), IsConverted="true").values_list("Id")
         )
+
+
+class SimpleLead(Document):
+    db_colc_name = "SimpleLead"
+    
+    FirstName = StringField()
+    LastName = StringField()
+    Title = StringField()
